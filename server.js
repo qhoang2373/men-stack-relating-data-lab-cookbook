@@ -22,15 +22,10 @@ mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
-app.use(passUserToView)
-app.use('/auth', authController);
-app.use(isSignedIn);
-app.use('/users/:userId/foods',foodsController);
-
 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
-// app.use(morgan('dev'));
+app.use(morgan('dev'));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -53,7 +48,12 @@ app.get('/vip-lounge', (req, res) => {
   }
 });
 
+
+app.use(passUserToView)
 app.use('/auth', authController);
+app.use(isSignedIn);
+app.use('/users/:userId/foods',foodsController);
+
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
