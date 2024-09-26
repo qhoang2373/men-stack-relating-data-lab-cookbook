@@ -8,7 +8,6 @@ const methodOverride = require('method-override');
 const morgan = require('morgan');
 const session = require('express-session');
 
-
 const authController = require('./controllers/auth.js');
 const foodsController = require('./controllers/foods.js');
 
@@ -46,7 +45,7 @@ app.get('/', (req, res) => {
 
 app.get('/foods', (req,res) => {
   res.render('/foods/new.ejs');
-})
+});
 
 app.get('/foods/new', (req, res) => {
   const user = req.session.user;
@@ -65,7 +64,6 @@ app.use(passUserToView)
 app.use('/auth', authController);
 app.use(isSignedIn);
 app.use('/users/:userId/foods',foodsController);
-
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
