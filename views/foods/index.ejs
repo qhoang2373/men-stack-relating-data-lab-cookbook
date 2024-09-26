@@ -6,8 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Pantry</title>
   </head>
+
   <body>
     <h1> Welcome to My Pantry</h1>
+    <%foods.forEach((food) => {%>
+      <ul>
+          <li><%= food.name %></li>
+          <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=DELETE" method="POST">
+              <button type="submit">Delete Food</button>
+          </form>
+          <a href="/users/<%= user._id%>/foods/<%=food._id%>/edit">Edit Item</a>
+      </ul>
+  <%})%>
     <a href="/foods/new">Add New Item</a>
   </body>
+
 </html>

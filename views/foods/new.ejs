@@ -9,7 +9,9 @@
 
 <body>
     <h1>Add New Pantry Item</h1>
-    <form action="/foods" method="POST">
+    <!-- <form action="/foods" method="POST"> -->
+        <form action="/users/<%= user._id%>/foods" method="POST">
+
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
     
@@ -18,7 +20,6 @@
 
         <label for="isHealthy">Is it Healthy?</label>
         <input type="checkbox" name="isHealthy" id="isHealthy" />
-        
 
         <button type="submit">Add New Item</button>
     
