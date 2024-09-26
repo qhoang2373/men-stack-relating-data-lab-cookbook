@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const foodSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    isHealthy: Boolean,
+    Quantity: Number,
+    required: true
   }
 });
 

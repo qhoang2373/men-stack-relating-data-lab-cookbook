@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1>Add New Food Item</h1>
+    <h1>Add New Pantry Item</h1>
     <form action="/foods" method="POST">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
@@ -16,7 +16,11 @@
         <label for="quantity">Quantity:</label>
         <input type="number" id="quantity" name="quantity" min="1" required> 
 
-        <button type="submit">Add New Food</button>
+        <label for="isHealthy">Is it Healthy?</label>
+        <input type="checkbox" name="isHealthy" id="isHealthy" />
+        
+
+        <button type="submit">Add New Item</button>
     
 </body>
 </html>
