@@ -14,14 +14,13 @@ const foodsController = require('./controllers/foods.js');
 const isSignedIn = require('./middleware/is-signed-in.js');
 const passUserToView = require('./middleware/pass-user-to-view.js');
 
-//===============Mongoose================//
 
 mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
-//===============Middleware=================//
+
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use(morgan('dev'));
@@ -33,7 +32,6 @@ app.use(
   })
 );
 
-//===============Routes================//
 app.use(passUserToView)
 
 app.get('/', (req, res) => {
