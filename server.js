@@ -34,20 +34,14 @@ app.use(
 );
 
 //===============Routes================//
+app.use(passUserToView)
+
 app.get('/', (req, res) => {
   res.render('index.ejs', {
     user: req.session.user,
   });
 });
 
-app.get('/foods', (req,res) => {
-  res.render('/foods/new.ejs');
-});
-
-app.get('/foods/new', (req, res) => {
-  const user = req.session.user;
-  res.render('foods/new.ejs', { user });
-});
 
 // app.get('/vip-lounge', (req, res) => {
 //   if (req.session.user) {
@@ -57,9 +51,9 @@ app.get('/foods/new', (req, res) => {
 //   }
 // });
 
-app.use(passUserToView)
 app.use('/auth', authController);
 app.use(isSignedIn);
+
 app.use('/users/:userId/foods',foodsController);
 
 app.listen(3000, () => {
